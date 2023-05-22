@@ -1,10 +1,13 @@
 <script setup>
 import { RouterLink } from "vue-router";
 import Container from "./Container.vue";
-import { ref } from "vue";
-import Modal from "../components/AuthModal.vue";
+import { ref, defineProps } from "vue";
+import LoginModal from "../components/AuthModal.vue";
 
+const isLogin = ref(false);
 const searchUserName = ref("");
+
+const isAuthenticated = ref(false);
 
 const onSearch = () => {
   return console.log("Onsearch");
@@ -26,14 +29,18 @@ const onSearch = () => {
             />
           </div>
 
-          <div class="right-content">
-            <AButton type="primary">Signup</AButton>
-            <AButton type="primary">Login</AButton>
+          <div v-if="!isAuthenticated" class="left-content authenticated">
+            <LoginModal :isLogin="true" />
+            <LoginModal :isLogin="isLogin" />
+          </div>
+          <!-- <AButton type="primary">Login</AButton> -->
+          <div v-else class="authenticated">
+            <AButton type="primary">Profile</AButton>
+            <AButton type="primary">Logout</AButton>
           </div>
         </div>
       </Container>
     </ALayoutHeader>
-    <Modal />
   </div>
 </template>
 <style scoped>
@@ -43,15 +50,22 @@ const onSearch = () => {
   padding: 0 1rem 0 1rem;
 }
 .right-content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 .left-content {
   display: flex;
   align-items: center;
 }
+
 .left-content a {
   margin-right: 1rem;
 }
 .right-content button {
+  margin-left: 1rem;
+}
+.ant-btn{
   margin-left: 1rem;
 }
 </style>
