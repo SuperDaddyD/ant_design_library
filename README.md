@@ -1,4 +1,4 @@
-# and_design_library
+# ant_design_library
 
 This template should help get you started developing with Vue 3 in Vite.
 
