@@ -1,4 +1,6 @@
 # ant_design_library
+Using the Ant Design library to help speed up building out a web application using Vue3
+Should be fun!
 
 This template should help get you started developing with Vue 3 in Vite.
 
